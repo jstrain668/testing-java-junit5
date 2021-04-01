@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IndexControllerTest {
 
-    IndexController indexController;
+    private IndexController indexController;
+
     @BeforeEach
     void setUp(){
         indexController = new IndexController();
