@@ -24,8 +24,12 @@ class IndexControllerTest {
 
     @DisplayName("Test exception handler for handling incorrect view")
     @Test
-    void oupsHandler() {
+    void oopsHandler() {
         //assertEquals("notimplemented",indexController.oupsHandler(),"Wrong view returned");
-        assertTrue("notimplemented".equalsIgnoreCase(indexController.oupsHandler()),() -> "Wrong view returned");
+        //assertTrue("notimplemented".equalsIgnoreCase(indexController.oopsHandler()),() -> "Wrong view returned");
+
+        assertThrows(ValueNotFoundException.class,() -> {
+            indexController.oopsHandler();
+        });
     }
 }
