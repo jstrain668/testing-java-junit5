@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
 
@@ -37,7 +38,7 @@ class IndexControllerTest {
         });
     }
 
-    @Disabled
+    @Disabled("Demo of test timeout")
     @Test
     void testTimeout(){
         assertTimeout(Duration.ofMillis(100), () -> {
@@ -47,7 +48,7 @@ class IndexControllerTest {
         });
     }
 
-    @Disabled
+    @Disabled("Demo of test timeout, running in a different thread")
     @Test
     void testTimeOutPrempt() {
 
@@ -66,5 +67,35 @@ class IndexControllerTest {
     @Test
     void testAssumptionIsTrue(){
         assumeTrue("GURU".equalsIgnoreCase("GURU"));
+    }
+
+    @EnabledOnOs(OS.MAC)
+    @Test
+    void testMeOnMacOS() {
+    }
+
+    @EnabledOnOs(OS.WINDOWS)
+    @Test
+    void testMeOnWindows() {
+    }
+
+    @EnabledOnJre(JRE.JAVA_8)
+    @Test
+    void testMeOnJava8() {
+    }
+
+    @EnabledOnJre(JRE.JAVA_11)
+    @Test
+    void testMeOnJava11() {
+    }
+
+    @EnabledIfEnvironmentVariable(named = "USERNAME", matches = "Developer")
+    @Test
+    void testIfUserDeveloper() {
+    }
+
+    @EnabledIfEnvironmentVariable(named = "USERNAME", matches = "fred")
+    @Test
+    void testIfUserFred() {
     }
 }
